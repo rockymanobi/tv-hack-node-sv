@@ -45,6 +45,10 @@ app.post('/upload2', routes.upload2.post );
 /****** io ******/
 io.on('connection', function(socket){
   console.log('a user connected');
+
+  // テレビに情報リクエストする
+  io.emit("info requested" , {});
+
   socket.on('disconnect', function(){
     console.log('user disconnected');
   });
@@ -52,6 +56,24 @@ io.on('connection', function(socket){
     console.log('message: ' + msg);
     io.emit('chat message', msg);
   });
+
+  socket.on('furifuri send', function(msg){
+    io.emit('furifuri rcv', msg);
+  });
+  
+  socket.on('finish watching send', function(data){
+    io.emit('finish watching rcv', data);
+  });
+
+  socket.on('info send', function(data){
+    io.emit('info rcv', data);
+  });
+
+  // TODO: implementation
+  socket.on('start watching send', function(data){
+    io.emit('start watching rcv', data);
+  });
+
 });
 
 

@@ -14,5 +14,9 @@
     "method-override": "~1.0.0",
     "connect-busboy": "latest",
     "ect": "latest"
+  },
+  "devDependencies": {
+    "node-dev": "latest"
   }
+  
 }
