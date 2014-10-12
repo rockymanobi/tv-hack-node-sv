@@ -69,6 +69,11 @@ io.on('connection', function(socket){
     io.emit('info rcv', data);
   });
 
+  socket.on('go to end command send', function(data){
+    io.emit('go to end command rcv', data);
+  });
+
+
   // TODO: implementation
   socket.on('start watching send', function(data){
     io.emit('start watching rcv', data);
