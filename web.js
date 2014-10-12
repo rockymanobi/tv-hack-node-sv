@@ -9,8 +9,6 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
-
-
 var ev = new EventEmitter();
 
 app.use(express.static(__dirname + '/public'));
@@ -70,13 +68,8 @@ io.on('connection', function(socket){
   });
 
   socket.on('go to end command send', function(data){
+    console.log("endend!");
     io.emit('go to end command rcv', data);
-  });
-
-
-  // TODO: implementation
-  socket.on('start watching send', function(data){
-    io.emit('start watching rcv', data);
   });
 
 });
